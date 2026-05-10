@@ -18,7 +18,11 @@ export default async function Layout({
 
   return (
     <RootProvider i18n={i18nUI.provider(lang)}>
-      <DocsLayout tree={source.getPageTree(lang)} {...baseOptions(lang)}>
+      <DocsLayout
+        containerProps={{ className: "[--fd-layout-width:100dvw]" }}
+        tree={source.getPageTree(lang)}
+        {...baseOptions(lang)}
+      >
         {children}
       </DocsLayout>
     </RootProvider>
