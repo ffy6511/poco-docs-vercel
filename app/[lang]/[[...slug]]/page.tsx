@@ -8,10 +8,10 @@ import {
 import { notFound } from "next/navigation";
 import { getMDXComponents } from "@/mdx-components";
 import type { Metadata } from "next";
-import { createRelativeLink } from "fumadocs-ui/mdx";
 import { LLMCopyButton, ViewOptions } from "@/components/ai/page-actions";
 import { gitConfig } from "@/lib/layout.shared";
 import { isLocale } from "@/lib/i18n";
+import { createDocsLink } from "@/lib/mdx-link";
 
 export default async function Page(props: PageProps<"/[lang]/[[...slug]]">) {
   const params = await props.params;
@@ -45,7 +45,7 @@ export default async function Page(props: PageProps<"/[lang]/[[...slug]]">) {
       <DocsBody>
         <MDX
           components={getMDXComponents({
-            a: createRelativeLink(source, page),
+            a: createDocsLink(page, params.lang),
           })}
         />
       </DocsBody>
